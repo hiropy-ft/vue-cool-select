@@ -378,14 +378,18 @@ export default {
       this.selectedItem = item
       this.focused = false
       this.search = ''
+      this.arrowsIndex = null
 
       // TODO это выполняете перед input, поэтому в обработчике select то что в v-model будет не определенно
       this.$emit('select', item)
     },
     onEnterKeyDown (e) {
-      console.log(e)
-      if (e.keyCode !== 229) {
-        this.focused = !this.focused
+      if (e.keyCode === 229) {
+        return
+      }
+      this.focused = !this.focused
+      if(this.selectedItem) {
+        this.onSelect(this.selectedItem)
       }
     },
     onSearchKeyDown (e) {
