@@ -336,6 +336,16 @@ export default {
 
       this.selectedItem = this.itemsComputed[this.arrowsIndex]
 
+      // Scroll to selected item
+      const menuElement = this.$refs['IZ-select__menu']
+      const selectedElement = menuElement.children[this.arrowsIndex]
+      if(selectedElement.offsetTop < menuElement.scrollTop) {
+        menuElement.scrollTop = selectedElement.offsetTop
+      }
+      if(selectedElement.offsetTop + selectedElement.clientHeight > menuElement.scrollTop + menuElement.clientHeight) {
+        menuElement.scrollTop = selectedElement.offsetTop + selectedElement.clientHeight - menuElement.clientHeight
+      }
+
       e.preventDefault()
     },
     setFocus () {
