@@ -4,7 +4,7 @@
     tabindex="0"
     @keydown.up="selectByArrow"
     @keydown.down="selectByArrow"
-    @keydown.enter="focused = !focused"
+    @keydown.enter="onEnterKeyDown"
     @keydown.tab.esc="focused = false"
   >
     <div
@@ -319,10 +319,10 @@ export default {
         this.arrowsIndex = this.selectedItemIndex || -1
       }
 
-      if (e.key === 'ArrowDown') {
+      if (e.key === 'ArrowDown' || e.key === 'Down') {
         this.arrowsIndex++
       }
-      if (e.key === 'ArrowUp') {
+      if (e.key === 'ArrowUp' || e.key === 'Up') {
         this.arrowsIndex--
       }
 
@@ -371,6 +371,12 @@ export default {
 
       // TODO это выполняете перед input, поэтому в обработчике select то что в v-model будет не определенно
       this.$emit('select', item)
+    },
+    onEnterKeyDown (e) {
+      console.log(e)
+      if (e.keyCode !== 229) {
+        this.focused = !this.focused
+      }
     },
     onSearchKeyDown (e) {
       // key === 'Delete' ||
