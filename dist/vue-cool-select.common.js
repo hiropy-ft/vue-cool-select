@@ -2295,7 +2295,7 @@ var es6_string_includes = __webpack_require__("2fdb");
 // EXTERNAL MODULE: ./src/styles/main.styl
 var main = __webpack_require__("2583");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ca0e2238-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=template&id=fc0700ee&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ca0e2238-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/component.vue?vue&type=template&id=11aa208d&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"IZ-select",attrs:{"tabindex":"0"},on:{"keydown":[function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"up",38,$event.key,["Up","ArrowUp"])){ return null; }return _vm.selectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"down",40,$event.key,["Down","ArrowDown"])){ return null; }return _vm.selectByArrow($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.onEnterKeyDown($event)},function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"tab",9,$event.key,"Tab")&&_vm._k($event.keyCode,"esc",27,$event.key,["Esc","Escape"])){ return null; }_vm.focused = false}]}},[_c('div',{ref:"IZ-select__input",class:{
       'IZ-select__input': true,
       'IZ-select__input--focused': _vm.focused,
@@ -2314,7 +2314,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/component.vue?vue&type=template&id=fc0700ee&
+// CONCATENATED MODULE: ./src/component.vue?vue&type=template&id=11aa208d&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
 var es6_array_find = __webpack_require__("7514");
@@ -2632,7 +2632,11 @@ var es6_number_constructor = __webpack_require__("c5f6");
       this.setSelectedItemByValue();
     },
     items: function items() {
-      this.setSelectedItemByValue();
+      this.setSelectedItemByValue(); // Select first item automatically
+
+      if (!this.loading && !this.selectedItem) {
+        this.selectedItem = this.itemsComputed[0];
+      }
     },
     selectedItem: function selectedItem() {
       this.$emit('input', this.currentItemValue);
