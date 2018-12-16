@@ -280,6 +280,10 @@ export default {
     },
     items () {
       this.setSelectedItemByValue()
+      // Select first item automatically
+      if (!this.loading && !this.selectedItem) {
+        this.selectedItem = this.itemsComputed[0]
+      }
     },
     selectedItem () {
       this.$emit('input', this.currentItemValue)
